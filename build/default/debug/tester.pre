@@ -5913,7 +5913,7 @@ delay_quartz_frequency_value = frequency;
 
 }
 
-# 18 "tester.c"
+# 19 "tester.c"
 void inizializzazione(void);
 void read_adc(void);
 unsigned char combinazioni[] = {
@@ -5921,12 +5921,13 @@ unsigned char combinazioni[] = {
 0x01,
 0x02
 };
-unsigned int R1, R2 = 0;
 int lettura[] = 0;
 float current, voltage, rapporto = 0;
 
 void main(void) {
-rapporto = R2/(R1+R2);
+delay_ms(1);
+rapporto = (15000+7500);
+rapporto = 7500/rapporto;
 inizializzazione();
 read_adc();
 while (1) {
@@ -5946,7 +5947,7 @@ delay_ms(5);
 }
 current = (lettura[1]-lettura[0]);
 voltage = (lettura[2]*5)/1024;
-voltage = voltage * rapporto
+voltage = voltage * rapporto;
 }
 
 void inizializzazione(void) {
