@@ -1,5 +1,5 @@
- build/default/debug/tester.d  \
- build/default/debug/tester.p1:  \
+ build/default/production/tester.d  \
+ build/default/production/tester.p1:  \
  tester.c  \
 ../../LaurTec_PIC_libraries_v_3.3.0/inc/delay.h  \
 ../../LaurTec_PIC_libraries_v_3.3.0/inc/LCD_44780.h  \

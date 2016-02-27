@@ -71,29 +71,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _read_adc `(v ~T0 @X0 0 ef ]
 "34
 [v _ricarica `(v ~T0 @X0 0 ef ]
-"2631 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f2550.h
-[s S192 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S192 . RC0 RC1 RC2 . RC4 RC5 RC6 RC7 ]
-"2641
-[s S193 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S193 . T1OSO T1OSI CCP1 . TX RX ]
-"2649
-[s S194 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S194 . T13CKI . P1A . CK DT ]
-"2657
-[s S195 :1 `uc 1 :1 `uc 1 ]
-[n S195 . . CCP2 ]
-"2661
-[s S196 :2 `uc 1 :1 `uc 1 ]
-[n S196 . . PA1 ]
-"2665
-[s S197 :1 `uc 1 :1 `uc 1 ]
-[n S197 . . PA2 ]
-"2630
-[u S191 `S192 1 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 ]
-[n S191 . . . . . . . ]
-"2670
-[v _PORTCbits `VS191 ~T0 @X0 0 e@3970 ]
 "194 C:\Program Files (x86)\Microchip\xc8\v1.36\include\stdio.h
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
 "5818 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f2550.h
@@ -4607,171 +4584,143 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tester.c: 55: void ricarica(void){
 [e :U _ricarica ]
 [f ]
-[; ;tester.c: 56: read_adc();
+[; ;tester.c: 56: LCD_write_message("Ciclo ricarica..");
 "56
-[e ( _read_adc ..  ]
-[; ;tester.c: 57: if((current > -1)&&(voltage>14.5)){
-"57
-[e $ ! && > _current -> -U -> 1 `i `f > -> _voltage `d .14.5 531  ]
-{
-[; ;tester.c: 58: LCD_write_message("Carica terminata");
-"58
 [e ( _LCD_write_message (1 :s 1C ]
-"59
-}
-[e :U 531 ]
-[; ;tester.c: 59: }
-[; ;tester.c: 60: PORTCbits.RC6 = 1;
-"60
-[e = . . _PORTCbits 0 6 -> -> 1 `i `uc ]
-[; ;tester.c: 61: LCD_write_message("Ciclo ricarica..");
-"61
-[e ( _LCD_write_message (1 :s 2C ]
-[; ;tester.c: 62: LCD_goto_line(2);
-"62
+[; ;tester.c: 57: LCD_goto_line(2);
+"57
 [e ( _LCD_goto_line (1 -> -> 2 `i `uc ]
-[; ;tester.c: 63: sprintf(str, "V:%.2f ", voltage);
-"63
-[e ( _sprintf (1 , (. , &U _str :s 3C -> _voltage `d ]
-[; ;tester.c: 64: LCD_write_string(str);
-"64
+[; ;tester.c: 58: sprintf(str, "V: %.2f", voltage);
+"58
+[e ( _sprintf (1 , (. , &U _str :s 2C -> _voltage `d ]
+[; ;tester.c: 59: LCD_write_string(str);
+"59
 [e ( _LCD_write_string (1 &U _str ]
-[; ;tester.c: 65: sprintf(str, "I:%.2f", current);
-"65
-[e ( _sprintf (1 , (. , &U _str :s 4C -> _current `d ]
-[; ;tester.c: 67: LCD_write_string(str);
-"67
-[e ( _LCD_write_string (1 &U _str ]
-[; ;tester.c: 68: read_adc();
-"68
-[e ( _read_adc ..  ]
-[; ;tester.c: 69: }
-"69
+[; ;tester.c: 60: }
+"60
 [e :UE 530 ]
 }
-"70
+"61
 [v _read_adc `(v ~T0 @X0 1 ef ]
 {
-[; ;tester.c: 70: void read_adc(void) {
+[; ;tester.c: 61: void read_adc(void) {
 [e :U _read_adc ]
 [f ]
-[; ;tester.c: 71: for (char i = 0; i < 3; i++) {
-"71
+[; ;tester.c: 62: for (char i = 0; i < 3; i++) {
+"62
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 3 `i 533  ]
-[e $U 534  ]
-[e :U 533 ]
+[e $ < -> _i `i -> 3 `i 532  ]
+[e $U 533  ]
+[e :U 532 ]
 {
-[; ;tester.c: 72: ADCON0 = combinazioni[i];
-"72
+[; ;tester.c: 63: ADCON0 = combinazioni[i];
+"63
 [e = _ADCON0 *U + &U _combinazioni * -> _i `ux -> -> # *U &U _combinazioni `ui `ux ]
-[; ;tester.c: 73: ADCON0bits.ADON = 1;
-"73
+[; ;tester.c: 64: ADCON0bits.ADON = 1;
+"64
 [e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
-[; ;tester.c: 74: ADCON0bits.GO = 1;
-"74
+[; ;tester.c: 65: ADCON0bits.GO = 1;
+"65
 [e = . . _ADCON0bits 4 1 -> -> 1 `i `uc ]
-[; ;tester.c: 75: while (ADCON0bits.GODONE == 1);
-"75
-[e $U 536  ]
-[e :U 537 ]
+[; ;tester.c: 66: while (ADCON0bits.GODONE == 1);
+"66
+[e $U 535  ]
 [e :U 536 ]
-[e $ == -> . . _ADCON0bits 7 1 `i -> 1 `i 537  ]
-[e :U 538 ]
-[; ;tester.c: 76: lettura [i] = ADRESH;
-"76
+[e :U 535 ]
+[e $ == -> . . _ADCON0bits 7 1 `i -> 1 `i 536  ]
+[e :U 537 ]
+[; ;tester.c: 67: lettura [i] = ADRESH;
+"67
 [e = *U + &U _lettura * -> _i `ux -> -> # *U &U _lettura `ui `ux -> _ADRESH `i ]
-[; ;tester.c: 77: lettura [i] = ((lettura[i] << 8) | ADRESL);
-"77
+[; ;tester.c: 68: lettura [i] = ((lettura[i] << 8) | ADRESL);
+"68
 [e = *U + &U _lettura * -> _i `ux -> -> # *U &U _lettura `ui `ux | << *U + &U _lettura * -> _i `ux -> -> # *U &U _lettura `ui `ux -> 8 `i -> _ADRESL `i ]
-[; ;tester.c: 78: delay_ms(5);
-"78
+[; ;tester.c: 69: delay_ms(5);
+"69
 [e ( _delay_ms (1 -> -> 5 `i `ui ]
-"79
+"70
 }
-"71
+"62
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 3 `i 533  ]
-[e :U 534 ]
-"79
+[e $ < -> _i `i -> 3 `i 532  ]
+[e :U 533 ]
+"70
 }
-[; ;tester.c: 79: }
-[; ;tester.c: 80: current = ((lettura[1]-lettura[0])*5)/1024;
-"80
-[e = _current -> / * - *U + &U _lettura * -> -> -> 1 `i `ui `ux -> -> # *U &U _lettura `ui `ux *U + &U _lettura * -> -> -> 0 `i `ui `ux -> -> # *U &U _lettura `ui `ux -> 5 `i -> 1024 `i `f ]
-[; ;tester.c: 81: voltage = (lettura[2]*5)/1024;
-"81
+[; ;tester.c: 70: }
+[; ;tester.c: 71: current = (lettura[1]-lettura[0]);
+"71
+[e = _current -> - *U + &U _lettura * -> -> -> 1 `i `ui `ux -> -> # *U &U _lettura `ui `ux *U + &U _lettura * -> -> -> 0 `i `ui `ux -> -> # *U &U _lettura `ui `ux `f ]
+[; ;tester.c: 72: voltage = (lettura[2]*5)/1024;
+"72
 [e = _voltage -> / * *U + &U _lettura * -> -> -> 2 `i `ui `ux -> -> # *U &U _lettura `ui `ux -> 5 `i -> 1024 `i `f ]
-[; ;tester.c: 82: voltage = voltage * rapporto;
-"82
+[; ;tester.c: 73: voltage = voltage * rapporto;
+"73
 [e = _voltage * _voltage _rapporto ]
-[; ;tester.c: 83: }
-"83
-[e :UE 532 ]
+[; ;tester.c: 74: }
+"74
+[e :UE 531 ]
 }
-"85
+"76
 [v _inizializzazione `(v ~T0 @X0 1 ef ]
 {
-[; ;tester.c: 85: void inizializzazione(void) {
+[; ;tester.c: 76: void inizializzazione(void) {
 [e :U _inizializzazione ]
 [f ]
-[; ;tester.c: 86: LATA = 0x00;
-"86
+[; ;tester.c: 77: LATA = 0x00;
+"77
 [e = _LATA -> -> 0 `i `uc ]
-[; ;tester.c: 87: TRISA = 0b11111011;
-"87
+[; ;tester.c: 78: TRISA = 0b11111011;
+"78
 [e = _TRISA -> -> 251 `i `uc ]
-[; ;tester.c: 89: LATB = 0x00;
-"89
+[; ;tester.c: 80: LATB = 0x00;
+"80
 [e = _LATB -> -> 0 `i `uc ]
-[; ;tester.c: 90: TRISB = 0b00;
-"90
+[; ;tester.c: 81: TRISB = 0b00;
+"81
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;tester.c: 92: LATC = 0x00;
-"92
+[; ;tester.c: 83: LATC = 0x00;
+"83
 [e = _LATC -> -> 0 `i `uc ]
-[; ;tester.c: 93: TRISC = 0b11011111;
-"93
+[; ;tester.c: 84: TRISC = 0b11011111;
+"84
 [e = _TRISC -> -> 223 `i `uc ]
-[; ;tester.c: 95: LCD_initialize(16);
-"95
+[; ;tester.c: 86: LCD_initialize(16);
+"86
 [e ( _LCD_initialize (1 -> -> 16 `i `uc ]
-[; ;tester.c: 96: LCD_write_message("inizializzazione");
-"96
-[e ( _LCD_write_message (1 :s 5C ]
-[; ;tester.c: 97: delay_ms(1000);
-"97
+[; ;tester.c: 87: LCD_write_message("inizializzazione");
+"87
+[e ( _LCD_write_message (1 :s 3C ]
+[; ;tester.c: 88: delay_ms(1000);
+"88
 [e ( _delay_ms (1 -> -> 1000 `i `ui ]
-[; ;tester.c: 98: LCD_clear();
-"98
+[; ;tester.c: 89: LCD_clear();
+"89
 [e ( _LCD_clear ..  ]
-[; ;tester.c: 100: ADCON0 = 0b00000000;
-"100
+[; ;tester.c: 91: ADCON0 = 0b00000000;
+"91
 [e = _ADCON0 -> -> 0 `i `uc ]
-[; ;tester.c: 101: ADCON1 = 0b00001011;
-"101
+[; ;tester.c: 92: ADCON1 = 0b00001011;
+"92
 [e = _ADCON1 -> -> 11 `i `uc ]
-[; ;tester.c: 102: ADCON2 = 0b10110010;
-"102
+[; ;tester.c: 93: ADCON2 = 0b10110010;
+"93
 [e = _ADCON2 -> -> 178 `i `uc ]
-[; ;tester.c: 103: ADCON0bits.CHS3 = 0;
-"103
+[; ;tester.c: 94: ADCON0bits.CHS3 = 0;
+"94
 [e = . . _ADCON0bits 2 5 -> -> 0 `i `uc ]
-[; ;tester.c: 104: ADCON0bits.CHS2 = 0;
-"104
+[; ;tester.c: 95: ADCON0bits.CHS2 = 0;
+"95
 [e = . . _ADCON0bits 2 4 -> -> 0 `i `uc ]
-[; ;tester.c: 105: ADCON0bits.CHS1 = 0;
-"105
+[; ;tester.c: 96: ADCON0bits.CHS1 = 0;
+"96
 [e = . . _ADCON0bits 2 3 -> -> 0 `i `uc ]
-[; ;tester.c: 106: }
-"106
-[e :UE 539 ]
+[; ;tester.c: 97: }
+"97
+[e :UE 538 ]
 }
 [p f _sprintf 8462336 ]
-[a 4C 73 58 37 46 50 102 0 ]
-[a 5C 105 110 105 122 105 97 108 105 122 122 97 122 105 111 110 101 0 ]
-[a 1C 67 97 114 105 99 97 32 116 101 114 109 105 110 97 116 97 0 ]
-[a 2C 67 105 99 108 111 32 114 105 99 97 114 105 99 97 46 46 0 ]
-[a 3C 86 58 37 46 50 102 32 0 ]
+[a 2C 86 58 32 37 46 50 102 0 ]
+[a 3C 105 110 105 122 105 97 108 105 122 122 97 122 105 111 110 101 0 ]
+[a 1C 67 105 99 108 111 32 114 105 99 97 114 105 99 97 46 46 0 ]
