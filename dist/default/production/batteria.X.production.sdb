@@ -3,101 +3,101 @@
 [d edition pro ]
 [d chip 18F2550 ]
 [d frameptr 4065 ]
-"61 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
-[v _delay_ms delay_ms `(v  1 e 1 0 ]
+"61 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
 "115
-[v _delay_set_quartz delay_set_quartz `(v  1 e 1 0 ]
-"49 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
-[v _LCD_enable_pulse LCD_enable_pulse `(v  1 e 1 0 ]
+[v _delay_set_quartz delay_set_quartz `(v  1 e 0 0 ]
+"49 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
+[v _LCD_enable_pulse LCD_enable_pulse `(v  1 e 0 0 ]
 "61
-[v _LCD_send_command LCD_send_command `(v  1 e 1 0 ]
+[v _LCD_send_command LCD_send_command `(v  1 e 0 0 ]
 "98
-[v _LCD_shift_cursor LCD_shift_cursor `(v  1 e 1 0 ]
+[v _LCD_shift_cursor LCD_shift_cursor `(v  1 e 0 0 ]
 "111
-[v _LCD_goto_line LCD_goto_line `(v  1 e 1 0 ]
+[v _LCD_goto_line LCD_goto_line `(v  1 e 0 0 ]
 "145
-[v _LCD_write_char LCD_write_char `(v  1 e 1 0 ]
+[v _LCD_write_char LCD_write_char `(v  1 e 0 0 ]
 "178
-[v _LCD_write_message LCD_write_message `(v  1 e 1 0 ]
+[v _LCD_write_message LCD_write_message `(v  1 e 0 0 ]
 "194
-[v _LCD_write_string LCD_write_string `(v  1 e 1 0 ]
+[v _LCD_write_string LCD_write_string `(v  1 e 0 0 ]
 "257
-[v _LCD_clear LCD_clear `(v  1 e 1 0 ]
+[v _LCD_clear LCD_clear `(v  1 e 0 0 ]
 "266
-[v _LCD_cursor LCD_cursor `(v  1 e 1 0 ]
+[v _LCD_cursor LCD_cursor `(v  1 e 0 0 ]
 "283
-[v _LCD_initialize LCD_initialize `(v  1 e 1 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\awdiv.c
+[v _LCD_initialize LCD_initialize `(v  1 e 0 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\awmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"409 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\doprnt.c
+"409 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
 [v _fround fround `(d  1 s 4 fround ]
 "425
 [v _scale scale `(d  1 s 4 scale ]
 "492
 [v _sprintf sprintf `(i  1 e 2 0 ]
-"60 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\fldivl.c
+"60 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\fldivl.c
 [v __div_to_l_ _div_to_l_ `(ul  1 e 4 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\flge.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\flneg.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\flneg.c
 [v ___flneg __flneg `(d  1 e 4 0 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\float.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 4 0 ]
-"43 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\fltol.c
+"43 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
-"86 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftadd.c
+"86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 4 0 ]
-"54 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftdiv.c
+"54 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 4 0 ]
-"60 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftdivl.c
+"60 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdivl.c
 [v __tdiv_to_l_ _tdiv_to_l_ `(ul  1 e 4 0 ]
-"62 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftmul.c
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
-"20 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftsub.c
+"20 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\isdigit.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\isdigit.c
 [v _isdigit isdigit `(b  1 e 0 0 ]
-"4 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\itoa.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\itoa.c
 [v _itoa itoa `(*.39uc  1 e 2 0 ]
 "17
 [v _utoa utoa `(*.39uc  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\lldiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\llmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\llmod.c
 [v ___llmod __llmod `(ul  1 e 4 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\lwdiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\lwmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
-"10 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcadd.c
+"10 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
 [v ___flsub __flsub `(d  1 e 4 0 ]
-"11 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcdiv.c
+"11 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcmul.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\Umul16.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
-"15 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\Umul32.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"10 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\xxtofl.c
+"10 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"45 D:\DOCUMENTI LUIGINO\GitHub\batteria.X\tester.c
-[v _main main `(v  1 e 1 0 ]
-"57
-[v _ricarica ricarica `(v  1 e 1 0 ]
-"78
-[v _read_adc read_adc `(v  1 e 1 0 ]
-"94
-[v _inizializzazione inizializzazione `(v  1 e 1 0 ]
-"49 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
+"47 D:\Documenti\GitHub\batteria.X\tester.c
+[v _main main `(v  1 e 0 0 ]
+"59
+[v _ricarica ricarica `(v  1 e 0 0 ]
+"83
+[v _read_adc read_adc `(v  1 e 0 0 ]
+"102
+[v _inizializzazione inizializzazione `(v  1 e 0 0 ]
+"49 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
 [v _delay_quartz_frequency_value delay_quartz_frequency_value `VEuc  1 e 1 0 ]
 "50
 [v _clock_counter_reference clock_counter_reference `VEui  1 e 2 0 ]
-[s S181 . 1 `uc 1 RC0 1 0 :1:0 
+[s S202 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -106,35 +106,38 @@
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-"2670 C:\Program Files (x86)\Microchip\xc8\v1.36\include\pic18f2550.h
-[s S190 . 1 `uc 1 T1OSO 1 0 :1:0 
+"2692 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f2550.h
+[s S211 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S197 . 1 `uc 1 T13CKI 1 0 :1:0 
+[s S218 . 1 `uc 1 T13CKI 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S204 . 1 `uc 1 . 1 0 :1:0 
+[s S225 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 ]
-[s S207 . 1 `uc 1 . 1 0 :2:0 
+[s S228 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PA1 1 0 :1:2 
 ]
-[s S210 . 1 `uc 1 . 1 0 :1:0 
+[s S231 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 ]
-[u S213 . 1 `S181 1 . 1 0 `S190 1 . 1 0 `S197 1 . 1 0 `S204 1 . 1 0 `S207 1 . 1 0 `S210 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES213  1 e 1 @3970 ]
-"2807
+[s S234 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RC3 1 0 :1:3 
+]
+[u S237 . 1 `S202 1 . 1 0 `S211 1 . 1 0 `S218 1 . 1 0 `S225 1 . 1 0 `S228 1 . 1 0 `S231 1 . 1 0 `S234 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES237  1 e 1 @3970 ]
+"3029
 [v _LATA LATA `VEuc  1 e 1 @3977 ]
-"2924
+"3164
 [v _LATB LATB `VEuc  1 e 1 @3978 ]
 [s S21 . 1 `uc 1 LATB0 1 0 :1:0 
 `uc 1 LATB1 1 0 :1:1 
@@ -145,7 +148,7 @@
 `uc 1 LATB6 1 0 :1:6 
 `uc 1 LATB7 1 0 :1:7 
 ]
-"2972
+"3212
 [s S30 . 1 `uc 1 LB0 1 0 :1:0 
 ]
 [s S32 . 1 `uc 1 . 1 0 :1:0 
@@ -171,7 +174,7 @@
 ]
 [u S53 . 1 `S21 1 . 1 0 `S30 1 . 1 0 `S32 1 . 1 0 `S35 1 . 1 0 `S38 1 . 1 0 `S41 1 . 1 0 `S44 1 . 1 0 `S47 1 . 1 0 `S50 1 . 1 0 ]
 [v _LATBbits LATBbits `VES53  1 e 1 @3978 ]
-"3056
+"3296
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
 [s S108 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
@@ -180,7 +183,7 @@
 `uc 1 LATC6 1 0 :1:6 
 `uc 1 LATC7 1 0 :1:7 
 ]
-"3090
+"3342
 [s S115 . 1 `uc 1 LC0 1 0 :1:0 
 ]
 [s S117 . 1 `uc 1 . 1 0 :1:0 
@@ -189,96 +192,105 @@
 [s S120 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 LC2 1 0 :1:2 
 ]
-[s S123 . 1 `uc 1 . 1 0 :6:0 
+[s S123 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 LC3 1 0 :1:3 
+]
+[s S126 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 LC4 1 0 :1:4 
+]
+[s S129 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 LC5 1 0 :1:5 
+]
+[s S132 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 LC6 1 0 :1:6 
 ]
-[s S126 . 1 `uc 1 . 1 0 :7:0 
+[s S135 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 LC7 1 0 :1:7 
 ]
-[u S129 . 1 `S108 1 . 1 0 `S115 1 . 1 0 `S117 1 . 1 0 `S120 1 . 1 0 `S123 1 . 1 0 `S126 1 . 1 0 ]
-[v _LATCbits LATCbits `VES129  1 e 1 @3979 ]
-"3144
+[u S138 . 1 `S108 1 . 1 0 `S115 1 . 1 0 `S117 1 . 1 0 `S120 1 . 1 0 `S123 1 . 1 0 `S126 1 . 1 0 `S129 1 . 1 0 `S132 1 . 1 0 `S135 1 . 1 0 ]
+[v _LATCbits LATCbits `VES138  1 e 1 @3979 ]
+"3411
 [v _TRISA TRISA `VEuc  1 e 1 @3986 ]
-"3341
+"3608
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-"3562
+"3829
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-"5658
+"5943
 [v _ADCON2 ADCON2 `VEuc  1 e 1 @4032 ]
-"5728
+"6013
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-"5818
+"6103
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @4034 ]
-[s S260 . 1 `uc 1 . 1 0 :1:0 
+[s S288 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
-"5862
-[s S263 . 1 `uc 1 ADON 1 0 :1:0 
+"6151
+[s S291 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S267 . 1 `uc 1 . 1 0 :1:0 
+[s S298 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[s S274 . 1 `uc 1 . 1 0 :1:0 
+[s S305 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S277 . 1 `uc 1 . 1 0 :1:0 
+[s S308 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[s S280 . 1 `uc 1 . 1 0 :1:0 
+[s S311 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S283 . 1 `uc 1 . 1 0 :1:0 
+[s S314 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S286 . 1 `uc 1 . 1 0 :1:0 
+[s S317 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S289 . 1 `S260 1 . 1 0 `S263 1 . 1 0 `S267 1 . 1 0 `S274 1 . 1 0 `S277 1 . 1 0 `S280 1 . 1 0 `S283 1 . 1 0 `S286 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES289  1 e 1 @4034 ]
-"5942
+[u S320 . 1 `S288 1 . 1 0 `S291 1 . 1 0 `S288 1 . 1 0 `S298 1 . 1 0 `S305 1 . 1 0 `S308 1 . 1 0 `S311 1 . 1 0 `S314 1 . 1 0 `S317 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES320  1 e 1 @4034 ]
+"6231
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
-"5948
+"6237
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
-"354 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\doprnt.c
+"354 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
 [v _dpowers dpowers `C[10]ul  1 s 40 dpowers ]
-"7 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\powers.c
+"7 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\powers.c
 [v __powers_ _powers_ `C[13]d  1 e 52 0 ]
 "39
 [v __npowers_ _npowers_ `C[13]d  1 e 52 0 ]
-"36 D:\DOCUMENTI LUIGINO\GitHub\batteria.X\tester.c
+"38 D:\Documenti\GitHub\batteria.X\tester.c
 [v _combinazioni combinazioni `[3]uc  1 e 3 0 ]
-"41
-[v _lettura lettura `[1]i  1 e 2 0 ]
-"42
+"43
+[v _lettura lettura `[3]i  1 e 6 0 ]
+"44
 [v _current current `f  1 e 4 0 ]
 [v _voltage voltage `f  1 e 4 0 ]
 [v _rapporto rapporto `f  1 e 4 0 ]
-"43
-[v _str str `[8]uc  1 e 8 0 ]
 "45
-[v _main main `(v  1 e 1 0 ]
+[v _str str `[8]uc  1 e 8 0 ]
+"47
+[v _main main `(v  1 e 0 0 ]
 {
-"55
-} 0
 "57
-[v _ricarica ricarica `(v  1 e 1 0 ]
-{
-"76
 } 0
-"492 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\doprnt.c
+"59
+[v _ricarica ricarica `(v  1 e 0 0 ]
+{
+"81
+} 0
+"492 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
 "516
 [v sprintf@fval fval `d  1 a 4 20 ]
-[u S497 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
+[u S532 . 4 `ul 1 vd 4 0 `d 1 integ 4 0 ]
 "526
-[v sprintf@tmpval tmpval `S497  1 a 4 14 ]
+[v sprintf@tmpval tmpval `S532  1 a 4 14 ]
 "528
 [v sprintf@val val `ul  1 a 4 8 ]
 "504
@@ -305,7 +317,7 @@
 [v scale@scl scl `c  1 a 1 47 ]
 "441
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\isdigit.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\isdigit.c
 [v _isdigit isdigit `(b  1 e 0 0 ]
 {
 [v isdigit@c c `uc  1 a 1 wreg ]
@@ -314,7 +326,7 @@
 [v isdigit@c c `uc  1 a 1 2 ]
 "15
 } 0
-"409 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\doprnt.c
+"409 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\doprnt.c
 [v _fround fround `(d  1 s 4 fround ]
 {
 [v fround@prec prec `uc  1 a 1 wreg ]
@@ -323,7 +335,7 @@
 [v fround@prec prec `uc  1 a 1 51 ]
 "418
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\awmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 {
 "11
@@ -334,7 +346,20 @@
 [v ___awmod@divisor divisor `i  1 p 2 2 ]
 "35
 } 0
-"60 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\ftdivl.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 12 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 11 ]
+[v ___awdiv@counter counter `uc  1 a 1 10 ]
+"8
+[v ___awdiv@dividend dividend `i  1 p 2 6 ]
+[v ___awdiv@divisor divisor `i  1 p 2 8 ]
+"42
+} 0
+"60 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftdivl.c
 [v __tdiv_to_l_ _tdiv_to_l_ `(ul  1 e 4 0 ]
 {
 "63
@@ -347,7 +372,7 @@
 [v __tdiv_to_l_@f2 f2 `f  1 p 4 4 ]
 "101
 } 0
-"60 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\fldivl.c
+"60 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\fldivl.c
 [v __div_to_l_ _div_to_l_ `(ul  1 e 4 0 ]
 {
 "63
@@ -360,7 +385,7 @@
 [v __div_to_l_@f2 f2 `d  1 p 4 4 ]
 "101
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\llmod.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\llmod.c
 [v ___llmod __llmod `(ul  1 e 4 0 ]
 {
 "11
@@ -370,7 +395,7 @@
 [v ___llmod@divisor divisor `ul  1 p 4 4 ]
 "26
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\lldiv.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lldiv.c
 [v ___lldiv __lldiv `(ul  1 e 4 0 ]
 {
 "11
@@ -382,7 +407,7 @@
 [v ___lldiv@divisor divisor `ul  1 p 4 4 ]
 "31
 } 0
-"43 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\fltol.c
+"43 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
 "45
@@ -392,7 +417,7 @@
 [v ___fltol@f1 f1 `d  1 p 4 48 ]
 "70
 } 0
-"245 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcadd.c
+"245 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcadd.c
 [v ___flsub __flsub `(d  1 e 4 0 ]
 {
 [v ___flsub@b b `d  1 p 4 72 ]
@@ -415,55 +440,55 @@
 [v ___fladd@a a `d  1 p 4 56 ]
 "237
 } 0
-"15 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\flneg.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\flneg.c
 [v ___flneg __flneg `(d  1 e 4 0 ]
 {
 [v ___flneg@f1 f1 `d  1 p 4 0 ]
 "20
 } 0
-"4 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\flge.c
+"4 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
 {
 [v ___flge@ff1 ff1 `d  1 p 4 0 ]
 [v ___flge@ff2 ff2 `d  1 p 4 4 ]
 "19
 } 0
-"78 D:\DOCUMENTI LUIGINO\GitHub\batteria.X\tester.c
-[v _read_adc read_adc `(v  1 e 1 0 ]
+"83 D:\Documenti\GitHub\batteria.X\tester.c
+[v _read_adc read_adc `(v  1 e 0 0 ]
 {
-"79
-[v read_adc@i i `uc  1 a 1 41 ]
-"92
+"84
+[v read_adc@i i `uc  1 a 1 66 ]
+"100
 } 0
-"10 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\xxtofl.c
+"10 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 {
 [v ___xxtofl@sign sign `uc  1 a 1 wreg ]
 "13
-[v ___xxtofl@arg arg `ul  1 a 4 24 ]
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
 "12
-[v ___xxtofl@exp exp `uc  1 a 1 23 ]
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
 "10
 [v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 14 ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
 "15
-[v ___xxtofl@sign sign `uc  1 a 1 22 ]
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
 "44
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcmul.c
+"8 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S804 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S839 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S809 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
-[u S812 . 4 `l 1 i 4 0 `d 1 f 4 0 `S804 1 fAsBytes 4 0 `S809 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S812  1 a 4 33 ]
+[s S844 . 4 `i 1 wordA 2 0 `i 1 wordB 2 2 ]
+[u S847 . 4 `l 1 i 4 0 `d 1 f 4 0 `S839 1 fAsBytes 4 0 `S844 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S847  1 a 4 33 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 27 ]
-[s S880 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S915 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S883 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S880 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S883  1 a 2 37 ]
+[u S918 . 2 `i 1 i 2 0 `ui 1 n 2 0 `S915 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S918  1 a 2 37 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 32 ]
 "11
@@ -475,66 +500,53 @@
 [v ___flmul@a a `d  1 p 4 18 ]
 "205
 } 0
-"11 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\sprcdiv.c
+"11 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
 {
 "21
-[v ___fldiv@grs grs `ul  1 a 4 19 ]
+[v ___fldiv@grs grs `ul  1 a 4 58 ]
 "22
-[v ___fldiv@rem rem `ul  1 a 4 13 ]
+[v ___fldiv@rem rem `ul  1 a 4 52 ]
 "20
-[v ___fldiv@new_exp new_exp `i  1 a 2 17 ]
+[v ___fldiv@new_exp new_exp `i  1 a 2 56 ]
 "19
-[v ___fldiv@aexp aexp `uc  1 a 1 24 ]
+[v ___fldiv@aexp aexp `uc  1 a 1 63 ]
 "18
-[v ___fldiv@bexp bexp `uc  1 a 1 23 ]
+[v ___fldiv@bexp bexp `uc  1 a 1 62 ]
 "16
-[v ___fldiv@sign sign `uc  1 a 1 12 ]
+[v ___fldiv@sign sign `uc  1 a 1 51 ]
 "11
-[v ___fldiv@b b `d  1 p 4 0 ]
-[v ___fldiv@a a `d  1 p 4 4 ]
+[v ___fldiv@b b `d  1 p 4 39 ]
+[v ___fldiv@a a `d  1 p 4 43 ]
 "184
 } 0
-"8 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"11
-[v ___awdiv@quotient quotient `i  1 a 2 12 ]
-"12
-[v ___awdiv@sign sign `uc  1 a 1 11 ]
-[v ___awdiv@counter counter `uc  1 a 1 10 ]
-"8
-[v ___awdiv@dividend dividend `i  1 p 2 6 ]
-[v ___awdiv@divisor divisor `i  1 p 2 8 ]
-"42
-} 0
-"194 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
-[v _LCD_write_string LCD_write_string `(v  1 e 1 0 ]
+"194 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
+[v _LCD_write_string LCD_write_string `(v  1 e 0 0 ]
 {
 [v LCD_write_string@buffer buffer `*.39uc  1 p 2 17 ]
 "204
 } 0
 "111
-[v _LCD_goto_line LCD_goto_line `(v  1 e 1 0 ]
+[v _LCD_goto_line LCD_goto_line `(v  1 e 0 0 ]
 {
 [v LCD_goto_line@line line `uc  1 a 1 wreg ]
 [v LCD_goto_line@line line `uc  1 a 1 wreg ]
 [v LCD_goto_line@line line `uc  1 a 1 12 ]
 "130
 } 0
-"94 D:\DOCUMENTI LUIGINO\GitHub\batteria.X\tester.c
-[v _inizializzazione inizializzazione `(v  1 e 1 0 ]
+"102 D:\Documenti\GitHub\batteria.X\tester.c
+[v _inizializzazione inizializzazione `(v  1 e 0 0 ]
 {
-"115
+"123
 } 0
-"178 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
-[v _LCD_write_message LCD_write_message `(v  1 e 1 0 ]
+"178 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
+[v _LCD_write_message LCD_write_message `(v  1 e 0 0 ]
 {
 [v LCD_write_message@buffer buffer `*.25Cuc  1 p 2 17 ]
 "188
 } 0
 "145
-[v _LCD_write_char LCD_write_char `(v  1 e 1 0 ]
+[v _LCD_write_char LCD_write_char `(v  1 e 0 0 ]
 {
 [v LCD_write_char@value value `uc  1 a 1 wreg ]
 "147
@@ -549,7 +561,7 @@
 "168
 } 0
 "283
-[v _LCD_initialize LCD_initialize `(v  1 e 1 0 ]
+[v _LCD_initialize LCD_initialize `(v  1 e 0 0 ]
 {
 [v LCD_initialize@quartz_frequency quartz_frequency `uc  1 a 1 wreg ]
 [v LCD_initialize@quartz_frequency quartz_frequency `uc  1 a 1 wreg ]
@@ -557,8 +569,8 @@
 [v LCD_initialize@quartz_frequency quartz_frequency `uc  1 a 1 14 ]
 "316
 } 0
-"115 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
-[v _delay_set_quartz delay_set_quartz `(v  1 e 1 0 ]
+"115 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
+[v _delay_set_quartz delay_set_quartz `(v  1 e 0 0 ]
 {
 [v delay_set_quartz@frequency frequency `uc  1 a 1 wreg ]
 [v delay_set_quartz@frequency frequency `uc  1 a 1 wreg ]
@@ -566,8 +578,8 @@
 [v delay_set_quartz@frequency frequency `uc  1 a 1 0 ]
 "119
 } 0
-"266 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
-[v _LCD_cursor LCD_cursor `(v  1 e 1 0 ]
+"266 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c
+[v _LCD_cursor LCD_cursor `(v  1 e 0 0 ]
 {
 [v LCD_cursor@active active `uc  1 a 1 wreg ]
 [v LCD_cursor@active active `uc  1 a 1 wreg ]
@@ -577,12 +589,12 @@
 "270
 } 0
 "257
-[v _LCD_clear LCD_clear `(v  1 e 1 0 ]
+[v _LCD_clear LCD_clear `(v  1 e 0 0 ]
 {
 "261
 } 0
 "61
-[v _LCD_send_command LCD_send_command `(v  1 e 1 0 ]
+[v _LCD_send_command LCD_send_command `(v  1 e 0 0 ]
 {
 [v LCD_send_command@D3 D3 `uc  1 a 1 wreg ]
 [v LCD_send_command@D3 D3 `uc  1 a 1 wreg ]
@@ -594,17 +606,17 @@
 "68
 } 0
 "49
-[v _LCD_enable_pulse LCD_enable_pulse `(v  1 e 1 0 ]
+[v _LCD_enable_pulse LCD_enable_pulse `(v  1 e 0 0 ]
 {
 "55
 } 0
-"61 D:\DOCUMENTI LUIGINO/Drive/librerie/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
-[v _delay_ms delay_ms `(v  1 e 1 0 ]
+"61 D:\Documenti/LaurTec_PIC_libraries_v_3.3.0/src\delay.c
+[v _delay_ms delay_ms `(v  1 e 0 0 ]
 {
 [v delay_ms@value_ms value_ms `ui  1 p 2 6 ]
 "96
 } 0
-"15 C:\Program Files (x86)\Microchip\xc8\v1.36\sources\common\Umul16.c
+"15 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
