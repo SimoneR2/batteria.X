@@ -43,6 +43,7 @@ float current, voltage, rapporto = 0;
 unsigned char str [8] = 0;
 
 void main(void) {
+    delay_set_quartz(16);
     rapporto = (R1 + R2);
     rapporto = R2 / rapporto;
     inizializzazione();
@@ -59,13 +60,14 @@ void ricarica(void) {
         PORTCbits.RC6 = 1; //attivo ciclo ricarica
         LCD_write_message("Ciclo ricarica..");
         LCD_goto_line(2);
-        sprintf(str, "V:%.2f ", voltage);
-        LCD_write_string(str);
-        sprintf(str, "I:%.2f", current);
-        //LCD_goto_xy(2,8);
-        LCD_write_string(str);
+        sprintf(str, "V:%.2f ", voltage); //convert float to char
+        str[7] = '\0'; //add null character
+        LCD_write_string(str); //write Voltage in LCD
+        sprintf(str, "I:%.2f", current); //convert float to char
+        str[7] = '\0'; //add null character
+        LCD_write_string(str); //write Current in LCD
         read_adc();
-        delay_ms(100); //attendi un po' prima di rileggere il tutto
+        delay_ms(500); //attendi un po' prima di rileggere il tutto
     }
     if ((current > -1)&&(voltage > 14.5)) {
         LCD_write_message("Carica terminata");
@@ -84,7 +86,7 @@ void read_adc(void) {
         delay_ms(5); //attesa random
     }
     current = ((lettura[1] - lettura[0])*5) / 1024;
-    current = current/0.200;
+    current = current / 0.200;
     voltage = (lettura[2]*5) / 1024;
     voltage = voltage * rapporto; //Conversione in tensione reale
 }

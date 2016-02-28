@@ -6026,6 +6026,7 @@ float current, voltage, rapporto = 0;
 unsigned char str [8] = 0;
 
 void main(void) {
+delay_set_quartz (16);
 rapporto = (15000 + 7500);
 rapporto = 7500 / rapporto;
 inizializzazione();
@@ -6043,12 +6044,13 @@ PORTCbits.RC6 = 1;
 LCD_write_message("Ciclo ricarica..");
 LCD_goto_line(2);
 sprintf(str, "V:%.2f ", voltage);
+str[7] = '\0';
 LCD_write_string(str);
 sprintf(str, "I:%.2f", current);
-
+str[7] = '\0';
 LCD_write_string(str);
 read_adc();
-delay_ms(100);
+delay_ms(500);
 }
 if ((current > -1)&&(voltage > 14.5)) {
 LCD_write_message("Carica terminata");
