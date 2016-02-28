@@ -34,6 +34,7 @@
 void inizializzazione(void);
 void read_adc(void);
 void ricarica(void);
+void scarica(void);
 
 unsigned char combinazioni[] = {
     0b00000001,
@@ -43,22 +44,90 @@ unsigned char combinazioni[] = {
 signed int lettura[3] = 0;
 signed float current, voltage, rapporto = 0;
 unsigned char str [8] = 0;
+unsigned long tempo, tempo_old = 0;
+unsigned int ore, minuti, secondi = 0;
+float sommatoriaCorrente = 0;
+
+__interrupt(high_priority) void isr_alta(void) { //incremento ogni secondo
+    INTCONbits.TMR0IF = 0;
+    TMR0H = 0x0B;
+    TMR0L = 0xDC;
+    tempo++;
+    secondi++;
+    if (secondi == 59) {
+        secondi = 0;
+        minuti++;
+        if (minuti == 59) {
+            minuti = 0;
+            ore++;
+        }
+    }
+}
 
 void main(void) {
     delay_set_quartz(16);
     rapporto = (R1 + R2);
-    rapporto= R2/rapporto;
+    rapporto = R2 / rapporto;
     inizializzazione();
     read_adc();
     while (1) {
         ricarica();
-        read_adc();
+        scarica();
     }
+}
+
+void scarica(void) {
+    tempo = 0;
+    T0CON = 0x85;
+    TMR0H = 0x0B;
+    TMR0L = 0xDC;
+    INTCONbits.GIE = 1;
+    INTCONbits.TMR0IF = 0;
+    INTCONbits.TMR0IE = 1;
+    secondi = 0;
+    minuti = 0;
+    ore = 0;
+    while (voltage > 10) {
+        LCD_clear();
+        PORTAbits.RA2 = 1;
+        LCD_write_message("scarica da:");
+        if (ore == 0) {
+            LCD_write_integer(minuti, 2, ZERO_CLEANING_ON);
+            LCD_write_integer(secondi, 2, ZERO_CLEANING_ON);
+        } else {
+            LCD_write_integer(ore, 2, ZERO_CLEANING_ON);
+            LCD_write_message(":");
+            LCD_write_integer(minuti, 2, ZERO_CLEANING_ON);
+        }
+        read_adc();
+        LCD_goto_line(2);
+        sprintf(str, "V:%.3f", voltage); //convert float to char
+        str[7] = '\0'; //add null character
+        LCD_write_string(str); //write Voltage in LCD
+        sprintf(str, " I:%.3f", current); //convert float to char
+        str[7] = '\0'; //add null character
+        LCD_write_string(str); //write Current in LCD
+        delay_s(10);
+        if (tempo - tempo_old >= 59) {
+            tempo_old = tempo;
+            sommatoriaCorrente = current + sommatoriaCorrente;
+        }
+    }
+    LCD_clear();
+    LCD_write_message("batteria scarica");
+    LCD_goto_line(2);
+    LCD_write_message("capacita':");
+    sommatoriaCorrente = sommatoriaCorrente / 60; //ottengo A scanditi in ore
+    sommatoriaCorrente = sommatoriaCorrente / ore; //ottengo ampere ora
+    sprintf(str, "%.4f", sommatoriaCorrente); //convert float to char
+    str[7] = '\0'; //add null character
+    LCD_write_string(str); //write Voltage in LCD
+    LCD_write_message("Ah");
 }
 
 void ricarica(void) {
     read_adc();
-    while ((current < -1)||(voltage < 14.5)) {
+    while ((current < 1) || (voltage < 13.5)) {
         PORTCbits.RC6 = 1; //attivo ciclo ricarica
         LCD_goto_line(1);
         LCD_write_message("Ciclo ricarica..");
@@ -101,7 +170,7 @@ void read_adc(void) {
 
 void inizializzazione(void) {
     LATA = 0x00;
-    TRISA = 0b11111111; //PORTA all input
+    TRISA = 0b11111011; //PORTA all input
 
     LATB = 0x00;
     TRISB = 0b00; //PORTB ALL OUTPUTS
@@ -120,4 +189,10 @@ void inizializzazione(void) {
     ADCON0bits.CHS3 = 0; //IMPOSTAZIONE DI SICUREZZA
     ADCON0bits.CHS2 = 0; //IMPOSTAZIONE DI SICUREZZA
     ADCON0bits.CHS1 = 0; //IMPOSTAZIONE DI SICUREZZA
+    T0CON = 0x85;
+    TMR0H = 0x0B;
+    TMR0L = 0xDC;
+    INTCONbits.GIE = 1;
+    INTCONbits.TMR0IF = 0;
+    INTCONbits.TMR0IE = 1;
 }
