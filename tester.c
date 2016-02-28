@@ -93,6 +93,7 @@ void scarica(void) {
         LCD_write_message("scarica da:");
         if (ore == 0) {
             LCD_write_integer(minuti, 2, ZERO_CLEANING_ON);
+            LCD_write_message(":");
             LCD_write_integer(secondi, 2, ZERO_CLEANING_ON);
         } else {
             LCD_write_integer(ore, 2, ZERO_CLEANING_ON);
@@ -117,12 +118,18 @@ void scarica(void) {
     LCD_write_message("batteria scarica");
     LCD_goto_line(2);
     LCD_write_message("capacita':");
+    if (ore>0){
     sommatoriaCorrente = sommatoriaCorrente / 60; //ottengo A scanditi in ore
     sommatoriaCorrente = sommatoriaCorrente / ore; //ottengo ampere ora
-    sprintf(str, "%.4f", sommatoriaCorrente); //convert float to char
+    sprintf(str, "%.3f", sommatoriaCorrente); //convert float to char
     str[7] = '\0'; //add null character
     LCD_write_string(str); //write Voltage in LCD
     LCD_write_message("Ah");
+    }
+    else {
+        sommatoriaCorrente = sommatoriaCorrente/minuti;
+    }
+    delay_s(5);
 }
 
 void ricarica(void) {
