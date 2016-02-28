@@ -55,9 +55,7 @@ void main(void) {
 
 void ricarica(void) {
     read_adc();
-    if ((current > -1)&&(voltage > 14.5)) {
-        LCD_write_message("Carica terminata");
-    } else {
+    while ((current < -1)&&(voltage < 14.5)) {
         PORTCbits.RC6 = 1; //attivo ciclo ricarica
         LCD_write_message("Ciclo ricarica..");
         LCD_goto_line(2);
@@ -67,6 +65,11 @@ void ricarica(void) {
         //LCD_goto_xy(2,8);
         LCD_write_string(str);
         read_adc();
+        delay_ms(100); //attendi un po' prima di rileggere il tutto
+    }
+    if ((current > -1)&&(voltage > 14.5)) {
+        LCD_write_message("Carica terminata");
+        delay_ms(5000);
     }
 }
 
@@ -81,8 +84,9 @@ void read_adc(void) {
         delay_ms(5); //attesa random
     }
     current = ((lettura[1] - lettura[0])*5) / 1024;
+    current = current/0.200;
     voltage = (lettura[2]*5) / 1024;
-    voltage = voltage * rapporto;
+    voltage = voltage * rapporto; //Conversione in tensione reale
 }
 
 void inizializzazione(void) {
