@@ -27,24 +27,24 @@
 #include "delay.c"
 #include <stdio.h>
 #include <math.h>
-#include "adc.h"
+//#include "adc.h"
 
-#define R1 17825 //INSERIRE VALORE KOhm PARTITORE
-#define R2 8111 //INSERIRE VALORE KOhm PARTITORE
+#define R1 17825 //INSERIRE VALORE Ohm PARTITORE
+#define R2 8111 //INSERIRE VALORE Ohm PARTITORE
 void inizializzazione(void);
 void read_adc(void);
 void ricarica(void);
 void scarica(void);
 
 unsigned char combinazioni[] = {
-    0b00000001,
-    0b00000101,
-    0b00001101
+    0b00000001, //AN0
+    0b00000101, //AN1
+    0b00001001  //AN2
 };
-signed int lettura[3] = 0;
-signed float current, voltage, rapporto = 0;
+signed long lettura[3] = 0;
+float current, voltage, rapporto = 0;
 unsigned char str [8] = 0;
-unsigned long tempo, tempo_old = 0;
+unsigned long tempo, tempo_old, tempo_delay = 0;
 unsigned int ore, minuti, secondi = 0;
 float sommatoriaCorrente = 0;
 
@@ -72,7 +72,17 @@ void main(void) {
     read_adc();
     while (1) {
         ricarica();
+        LCD_clear();
         scarica();
+        LCD_clear();
+        while(voltage>5){
+            LCD_home();
+            LCD_write_message("Scollegare batt");
+            LCD_goto_line(2);
+            LCD_write_message("per nuovo test.");
+            delay_s(1);
+            read_adc();
+        }
     }
 }
 
@@ -87,19 +97,17 @@ void scarica(void) {
     secondi = 0;
     minuti = 0;
     ore = 0;
+    
     while (voltage > 10) {
-        LCD_clear();
-        PORTAbits.RA2 = 1;
-        LCD_write_message("scarica da:");
-        if (ore == 0) {
-            LCD_write_integer(minuti, 2, ZERO_CLEANING_ON);
-            LCD_write_message(":");
-            LCD_write_integer(secondi, 2, ZERO_CLEANING_ON);
-        } else {
-            LCD_write_integer(ore, 2, ZERO_CLEANING_ON);
-            LCD_write_message(":");
-            LCD_write_integer(minuti, 2, ZERO_CLEANING_ON);
-        }
+        //LCD_clear();
+        LATAbits.LATA3 = 1;
+        LCD_home();
+        LCD_write_message("tempo:");
+        LCD_write_integer(ore, 2, ZERO_CLEANING_OFF);
+        LCD_write_message(":");
+        LCD_write_integer(minuti, 2, ZERO_CLEANING_OFF);
+        LCD_write_message(":");
+        LCD_write_integer(secondi, 2, ZERO_CLEANING_OFF);
         read_adc();
         LCD_goto_line(2);
         sprintf(str, "V:%.3f", voltage); //convert float to char
@@ -108,33 +116,44 @@ void scarica(void) {
         sprintf(str, " I:%.3f", current); //convert float to char
         str[7] = '\0'; //add null character
         LCD_write_string(str); //write Current in LCD
-        delay_s(10);
+        delay_ms(100);
         if (tempo - tempo_old >= 59) {
             tempo_old = tempo;
             sommatoriaCorrente = current + sommatoriaCorrente;
         }
     }
     LCD_clear();
+    LATAbits.LATA3 = 0;
     LCD_write_message("batteria scarica");
     LCD_goto_line(2);
-    LCD_write_message("capacita':");
-    if (ore>0){
-    sommatoriaCorrente = sommatoriaCorrente / 60; //ottengo A scanditi in ore
-    sommatoriaCorrente = sommatoriaCorrente / ore; //ottengo ampere ora
-    sprintf(str, "%.3f", sommatoriaCorrente); //convert float to char
-    str[7] = '\0'; //add null character
-    LCD_write_string(str); //write Voltage in LCD
-    LCD_write_message("Ah");
+    LCD_write_message("C:");
+    if (ore > 0) {
+        sommatoriaCorrente = sommatoriaCorrente / 60; //ottengo A scanditi in ore
+        sommatoriaCorrente = sommatoriaCorrente / ore; //ottengo ampere ora
+        sommatoriaCorrente = -(sommatoriaCorrente);
+        sprintf(str, "%.2f", sommatoriaCorrente); //convert float to char
+        str[7] = '\0'; //add null character
+        LCD_write_string(str); //write Voltage in LCD
+        LCD_write_message("Ah");
+    } else {
+        if ((tempo!=0)&&(sommatoriaCorrente!=0)){
+        sommatoriaCorrente = sommatoriaCorrente / (minuti*60);
+        sommatoriaCorrente = 0-sommatoriaCorrente;
+        sprintf(str, "%.3f", sommatoriaCorrente); //convert float to char
+        str[7] = '\0'; //add null character
+        LCD_write_string(str); //write Voltage in LCD
+        LCD_write_message("Ah");
     }
-    else {
-        sommatoriaCorrente = sommatoriaCorrente/minuti;
+        else{
+            LCD_write_message("ERRORE!!");
+        }
     }
     delay_s(5);
 }
 
 void ricarica(void) {
     read_adc();
-    while ((current < 1) || (voltage < 13.5)) {
+    while ((current < -0.5) || (voltage < 13.5)) {
         PORTCbits.RC6 = 1; //attivo ciclo ricarica
         LCD_goto_line(1);
         LCD_write_message("Ciclo ricarica..");
@@ -146,9 +165,9 @@ void ricarica(void) {
         str[7] = '\0'; //add null character
         LCD_write_string(str); //write Current in LCD
         read_adc();
-        delay_ms(1000); //attendi un po' prima di rileggere il tutto
-        LCD_clear();
-        delay_ms(10);
+        delay_ms(500); //attendi un po' prima di rileggere il tutto
+       //
+        delay_ms(1);
     }
     if ((current > -1)&&(voltage > 14.5)) {
         LCD_write_message("Carica terminata");
@@ -159,7 +178,6 @@ void ricarica(void) {
 void read_adc(void) {
     for (char i = 0; i < 3; i++) {
         ADCON0 = combinazioni[i]; //disattivo conversione, imposto il canale interessato
-        ADCON0bits.ADON = 1; //attivo ADC
         ADCON0bits.GO = 1; //inzio conversione
         while (ADCON0bits.GODONE == 1); //attendo fine conversione
         lettura [i] = ADRESH; //salvo il dato
@@ -177,22 +195,22 @@ void read_adc(void) {
 
 void inizializzazione(void) {
     LATA = 0x00;
-    TRISA = 0b11111011; //PORTA all input
+    TRISA = 0b11110111; //PORTA all input
 
     LATB = 0x00;
-    TRISB = 0b00; //PORTB ALL OUTPUTS
+    TRISB = 0x00; //PORTB ALL OUTPUTS
 
     LATC = 0x00;
     TRISC = 0b11111111;
 
     LCD_initialize(16);
-    LCD_write_message("ciaone");
-    delay_ms(1000);
+    LCD_write_message("TESTER BATTERIE");
+    delay_ms(500);
     LCD_clear();
     //OpenADC(ADC_FOSC_16 & ADC_RIGHT_JUST & ADC_16_TAD, ADC_CH0 & ADC_REF_VDD_VSS & ADC_INT_OFF, ADC_4ANA);
     ADCON0 = 0b00000000; //DISABILITO TUTTO
-    ADCON1 = 0b00001011;
-    ADCON2 = 0b10110010;
+    ADCON1 = 0b00001100;
+    ADCON2 = 0b10111110;
     ADCON0bits.CHS3 = 0; //IMPOSTAZIONE DI SICUREZZA
     ADCON0bits.CHS2 = 0; //IMPOSTAZIONE DI SICUREZZA
     ADCON0bits.CHS1 = 0; //IMPOSTAZIONE DI SICUREZZA
@@ -202,4 +220,5 @@ void inizializzazione(void) {
     INTCONbits.GIE = 1;
     INTCONbits.TMR0IF = 0;
     INTCONbits.TMR0IE = 1;
+    ADCON0bits.ADON = 1; //attivo ADC
 }

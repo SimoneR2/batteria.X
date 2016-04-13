@@ -5708,7 +5708,7 @@ extern __nonreentrant void _delay3(unsigned char);
 
 
 #pragma config CCP2MX = ON
-#pragma config PBADEN = ON
+#pragma config PBADEN = OFF
 #pragma config LPT1OSC = OFF
 #pragma config MCLRE = ON
 
@@ -5816,7 +5816,7 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 74 "../../LaurTec_PIC_libraries_v_3.3.0/inc\delay.h"
+# 74 "../../LaurTec_PIC_libraries_v_3.3.0 - Copia/inc\delay.h"
 void delay_ms (unsigned int value_ms);
 
 # 88
@@ -5825,67 +5825,67 @@ void delay_s (unsigned char value_s);
 # 102
 void delay_set_quartz (unsigned char frequency);
 
-# 165 "../../LaurTec_PIC_libraries_v_3.3.0/inc\LCD_44780.h"
-void LCD_enable_pulse (void);
+# 166 "../../LaurTec_PIC_libraries_v_3.3.0 - Copia/inc\LCD_44780.h"
+void LCD_enable_pulse(void);
 
-# 184
-void LCD_send_command (unsigned char bit_3, unsigned char bit_2, unsigned char bit_1, unsigned char bit_0);
+# 185
+void LCD_send_command(unsigned char bit_3, unsigned char bit_2, unsigned char bit_1, unsigned char bit_0);
 
-# 193
+# 194
 void LCD_home(void);
 
-# 208
+# 209
 void LCD_shift(unsigned char shift, unsigned char number_of_shift);
 
-# 224
-void LCD_shift_cursor(unsigned char shift,unsigned char number_of_shift);
+# 225
+void LCD_shift_cursor(unsigned char shift, unsigned char number_of_shift);
 
-# 236
-void LCD_goto_line (unsigned char line);
+# 237
+void LCD_goto_line(unsigned char line);
 
-# 251
-void LCD_goto_xy (unsigned char x, unsigned char y);
+# 252
+void LCD_goto_xy(unsigned char x, unsigned char y);
 
-# 262
-void LCD_write_char (unsigned char value);
+# 263
+void LCD_write_char(unsigned char value);
 
-# 281
+# 282
 void LCD_write_message(const unsigned char *buffer);
 
-# 296
+# 297
 void LCD_write_string(unsigned char *buffer);
 
-# 316
+# 317
 void LCD_write_integer(int value, unsigned char number_of_digits, unsigned char zero_cleaning);
 
-# 325
-void LCD_clear (void);
+# 326
+void LCD_clear(void);
 
-# 341
+# 342
 void LCD_cursor(unsigned char active, unsigned char blinking);
 
-# 356
+# 357
 void LCD_backlight(unsigned char active);
 
-# 370
+# 371
 void LCD_initialize(unsigned char quartz_frequency);
 
-# 49 "../../LaurTec_PIC_libraries_v_3.3.0/src\LCD_44780.c"
+# 49 "../../LaurTec_PIC_libraries_v_3.3.0 - Copia/src\LCD_44780.c"
 void LCD_enable_pulse (void) {
 
-LATBbits.LATB3 = 1;
+PORTBbits.RB3 = 1;
 delay_ms (1);
-LATBbits.LATB3 = 0;
+PORTBbits.RB3 = 0;
 delay_ms (1);
 }
 
 # 61
 void LCD_send_command (unsigned char D3, unsigned char D2, unsigned char D1, unsigned char D0) {
 
-LATBbits.LATB4 = D0;
-LATBbits.LATB5 = D1;
-LATBbits.LATB6 = D2;
-LATBbits.LATB7 = D3;
+PORTBbits.RB4 = D0;
+PORTBbits.RB5 = D1;
+PORTBbits.RB6 = D2;
+PORTBbits.RB7 = D3;
 LCD_enable_pulse ();
 }
 
@@ -5956,7 +5956,7 @@ void LCD_write_char (unsigned char value) {
 
 unsigned char D3,D2,D1,D0;
 
-LATBbits.LATB1 = 1;
+PORTBbits.RB1 = 1;
 
 
 D3 = (value & 0b10000000) >> 7;
@@ -5974,7 +5974,7 @@ D0 = (value & 0b00000001);
 
 LCD_send_command (D3,D2,D1,D0);
 
-LATBbits.LATB1 = 0;
+PORTBbits.RB1 = 0;
 }
 
 # 178
@@ -6063,7 +6063,7 @@ LCD_send_command (1,1,active,blinking);
 
 void LCD_backlight (unsigned char active) {
 
-LATCbits.LATC1 = active;
+PORTCbits.RC5 = active;
 }
 
 
@@ -6073,9 +6073,9 @@ void LCD_initialize (unsigned char quartz_frequency) {
 
 delay_set_quartz (quartz_frequency);
 
-LATBbits.LATB1 = 0x00;
-LATBbits.LATB3 = 0x00;
-LATBbits.LATB2 = 0x00;
+PORTBbits.RB1 = 0x00;
+PORTBbits.RB3 = 0x00;
+PORTBbits.RB2 = 0x00;
 
 delay_ms (100);
 LCD_send_command (0,0,1,1);
@@ -6104,8 +6104,8 @@ LCD_cursor (0,0);
 
 }
 
-# 49 "../../LaurTec_PIC_libraries_v_3.3.0/src\delay.c"
-volatile unsigned char delay_quartz_frequency_value = 20;
+# 49 "../../LaurTec_PIC_libraries_v_3.3.0 - Copia/src\delay.c"
+volatile unsigned char delay_quartz_frequency_value = 16;
 volatile unsigned int clock_counter_reference = 0;
 
 # 61
@@ -6239,12 +6239,12 @@ void scarica(void);
 unsigned char combinazioni[] = {
 0b00000001,
 0b00000101,
-0b00001101
+0b00001001
 };
-signed int lettura[3] = 0;
-signed float current, voltage, rapporto = 0;
+signed long lettura[3] = 0;
+float current, voltage, rapporto = 0;
 unsigned char str [8] = 0;
-unsigned long tempo, tempo_old = 0;
+unsigned long tempo, tempo_old, tempo_delay = 0;
 unsigned int ore, minuti, secondi = 0;
 float sommatoriaCorrente = 0;
 
@@ -6272,7 +6272,17 @@ inizializzazione();
 read_adc();
 while (1) {
 ricarica();
+LCD_clear();
 scarica();
+LCD_clear();
+while(voltage>5){
+LCD_home();
+LCD_write_message("Scollegare batt");
+LCD_goto_line(2);
+LCD_write_message("per nuovo test.");
+delay_s(1);
+read_adc();
+}
 }
 }
 
@@ -6287,19 +6297,17 @@ INTCONbits.TMR0IE = 1;
 secondi = 0;
 minuti = 0;
 ore = 0;
+
 while (voltage > 10) {
-LCD_clear();
-PORTAbits.RA2 = 1;
-LCD_write_message("scarica da:");
-if (ore == 0) {
-LCD_write_integer(minuti, 2, 0x01);
+
+LATAbits.LATA3 = 1;
+LCD_home();
+LCD_write_message("tempo:");
+LCD_write_integer(ore, 2, 0x00);
 LCD_write_message(":");
-LCD_write_integer(secondi, 2, 0x01);
-} else {
-LCD_write_integer(ore, 2, 0x01);
+LCD_write_integer(minuti, 2, 0x00);
 LCD_write_message(":");
-LCD_write_integer(minuti, 2, 0x01);
-}
+LCD_write_integer(secondi, 2, 0x00);
 read_adc();
 LCD_goto_line(2);
 sprintf(str, "V:%.3f", voltage);
@@ -6308,28 +6316,44 @@ LCD_write_string(str);
 sprintf(str, " I:%.3f", current);
 str[7] = '\0';
 LCD_write_string(str);
-delay_s(10);
+delay_ms(100);
 if (tempo - tempo_old >= 59) {
 tempo_old = tempo;
 sommatoriaCorrente = current + sommatoriaCorrente;
 }
 }
 LCD_clear();
+LATAbits.LATA3 = 0;
 LCD_write_message("batteria scarica");
 LCD_goto_line(2);
-LCD_write_message("capacita':");
+LCD_write_message("C:");
+if (ore > 0) {
 sommatoriaCorrente = sommatoriaCorrente / 60;
 sommatoriaCorrente = sommatoriaCorrente / ore;
-sprintf(str, "%.4f", sommatoriaCorrente);
+sommatoriaCorrente = -(sommatoriaCorrente);
+sprintf(str, "%.2f", sommatoriaCorrente);
 str[7] = '\0';
 LCD_write_string(str);
 LCD_write_message("Ah");
+} else {
+if ((tempo!=0)&&(sommatoriaCorrente!=0)){
+sommatoriaCorrente = sommatoriaCorrente / (minuti*60);
+sommatoriaCorrente = 0-sommatoriaCorrente;
+sprintf(str, "%.3f", sommatoriaCorrente);
+str[7] = '\0';
+LCD_write_string(str);
+LCD_write_message("Ah");
+}
+else{
+LCD_write_message("ERRORE!!");
+}
+}
 delay_s(5);
 }
 
 void ricarica(void) {
 read_adc();
-while ((current < 1) || (voltage < 13.5)) {
+while ((current < -0.5) || (voltage < 13.5)) {
 PORTCbits.RC6 = 1;
 LCD_goto_line(1);
 LCD_write_message("Ciclo ricarica..");
@@ -6341,9 +6365,9 @@ sprintf(str, " I:%.3f", current);
 str[7] = '\0';
 LCD_write_string(str);
 read_adc();
-delay_ms(1000);
-LCD_clear();
-delay_ms(10);
+delay_ms(500);
+
+delay_ms(1);
 }
 if ((current > -1)&&(voltage > 14.5)) {
 LCD_write_message("Carica terminata");
@@ -6354,7 +6378,6 @@ delay_ms(5000);
 void read_adc(void) {
 for (char i = 0; i < 3; i++) {
 ADCON0 = combinazioni[i];
-ADCON0bits.ADON = 1;
 ADCON0bits.GO = 1;
 while (ADCON0bits.GODONE == 1);
 lettura [i] = ADRESH;
@@ -6372,22 +6395,22 @@ voltage = voltage / rapporto;
 
 void inizializzazione(void) {
 LATA = 0x00;
-TRISA = 0b11111011;
+TRISA = 0b11110111;
 
 LATB = 0x00;
-TRISB = 0b00;
+TRISB = 0x00;
 
 LATC = 0x00;
 TRISC = 0b11111111;
 
 LCD_initialize(16);
-LCD_write_message("ciaone");
-delay_ms(1000);
+LCD_write_message("TESTER BATTERIE");
+delay_ms(500);
 LCD_clear();
 
 ADCON0 = 0b00000000;
-ADCON1 = 0b00001011;
-ADCON2 = 0b10110010;
+ADCON1 = 0b00001100;
+ADCON2 = 0b10111110;
 ADCON0bits.CHS3 = 0;
 ADCON0bits.CHS2 = 0;
 ADCON0bits.CHS1 = 0;
@@ -6397,4 +6420,5 @@ TMR0L = 0xDC;
 INTCONbits.GIE = 1;
 INTCONbits.TMR0IF = 0;
 INTCONbits.TMR0IE = 1;
+ADCON0bits.ADON = 1;
 }
