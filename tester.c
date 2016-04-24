@@ -54,10 +54,10 @@ __interrupt(high_priority) void isr_alta(void) { //incremento ogni secondo
     TMR0L = 0xDC;
     tempo++;
     secondi++;
-    if (secondi == 59) {
+    if (secondi == 60) {
         secondi = 0;
         minuti++;
-        if (minuti == 59) {
+        if (minuti == 60) {
             minuti = 0;
             ore++;
         }
@@ -127,23 +127,27 @@ void scarica(void) {
     LCD_write_message("batteria scarica");
     LCD_goto_line(2);
     LCD_write_message("C:");
-    if (ore > 0) {
-        sommatoriaCorrente = sommatoriaCorrente / 60; //ottengo A scanditi in ore
-        sommatoriaCorrente = sommatoriaCorrente / ore; //ottengo ampere ora
+        float time = 0;
+        time = secondi/(60*60);
+        time = time+minuti/60;
+        time = time+ore;
+        if (time>0){
+        sommatoriaCorrente = sommatoriaCorrente/time;
         sommatoriaCorrente = -(sommatoriaCorrente);
         sprintf(str, "%.2f", sommatoriaCorrente); //convert float to char
         str[7] = '\0'; //add null character
         LCD_write_string(str); //write Voltage in LCD
         LCD_write_message("Ah");
-    } else {
-        if ((tempo!=0)&&(sommatoriaCorrente!=0)){
-        sommatoriaCorrente = sommatoriaCorrente / (minuti*60);
-        sommatoriaCorrente = 0-sommatoriaCorrente;
-        sprintf(str, "%.3f", sommatoriaCorrente); //convert float to char
-        str[7] = '\0'; //add null character
-        LCD_write_string(str); //write Voltage in LCD
-        LCD_write_message("Ah");
-    }
+        }
+//    } else {
+//        if ((tempo!=0)&&(sommatoriaCorrente!=0)){
+//        sommatoriaCorrente = sommatoriaCorrente / (minuti*60);
+//        sommatoriaCorrente = 0-sommatoriaCorrente;
+//        sprintf(str, "%.3f", sommatoriaCorrente); //convert float to char
+//        str[7] = '\0'; //add null character
+//        LCD_write_string(str); //write Voltage in LCD
+//        LCD_write_message("Ah");
+//    }
         else{
             LCD_write_message("ERRORE!!");
         }
